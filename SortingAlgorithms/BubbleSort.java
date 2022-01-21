@@ -1,8 +1,7 @@
 package SortingAlgorithms;
 import Windows.*;
 import java.io.*;
-public class BubbleSort {
-    private Main main = new Main();
+public class BubbleSort extends Sort{
     public static void bubbleSort(int[] arr) {
       boolean sorted = false;
       int comparison = 0; 

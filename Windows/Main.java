@@ -54,27 +54,9 @@ public class Main {
       arr[i] = (int)(Math.random() * 20000) - 10000;
       System.out.print(arr[i] + ", ");
     }
-    //BubbleSort bs = new BubbleSort();
-    //BubbleSort.bubbleSort(arr);
-    System.out.println("BIG CHUNGUS AMONGUS");
+    BubbleSort bs = new BubbleSort();
+    bs.bubbleSort(arr);
     QuickSort qs = new QuickSort();
     qs.quickSort(arr, 0, arrLength-1); 
-  }
-
-  	public int[] swap(int[] arr, int i, int j) {
-		int temp = arr[i];
-		arr[i] = arr[j];
-		arr[j] = temp;		
-    return arr;
-	}
-
-  public void printArray(int[] arr) {
-    System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-    for(int i = 0; i < arr.length; i++) {
-      if(i == arr.length-1) {
-        System.out.println(arr[i]);
-      }
-      System.out.print(arr[i] + ", ");
-    }
   }
 }

@@ -1,15 +1,14 @@
 package SortingAlgorithms;
 import Windows.*;
 import java.io.*;
-public class SelectionSort {
-  static Main main = new Main();
-private static void selectionSort(int arr[]) {
+public class SelectionSort extends Sort {
+private void selectionSort(int arr[]) {
 		for (int i = 0; i < arr.length - 1; i++) {
 			int minValue = i;
 			for (int j = i + 1; j < arr.length; j++)
 				if (arr[j] < arr[minValue])
 					minValue = j;
-          main.swap(arr, minValue, i);
+          swap(arr, minValue, i);
 		}
 		System.out.println();
 		for(int i = 0; i < arr.length; i++) {

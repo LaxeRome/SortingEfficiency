@@ -1,21 +1,61 @@
 package SortingAlgorithms;
 
-public class MergeSort extends Sort {
-public int[] mergeSort(int[] nums1, int[] nums2) {
-        int[] merged = new int[nums1.length + nums2.length];
-        System.arraycopy(nums1, 0, merged, 0, nums1.length);
-        System.arraycopy(nums2, 0, merged, nums1.length, nums2.length);
-        int temp;
-        for (int i = 1; i < merged.length; i++) {
-            for (int j = i; j > 0; j--) {
-                if (merged[j] < merged [j - 1]) {
-                    temp = merged[j];
-                    merged[j] = merged[j - 1];
-                    merged[j - 1] = temp;
-                }
-            }
-        }
-        return merged;
-    }
+public class MergeSort {
+	public static int comparisons;
 
+	public static void mergeSort(int[] arr) {
+
+		if (arr.length < 2) {
+			return;
+		}
+
+		int midIndex = arr.length / 2;
+		int[] leftHalf = new int[midIndex];
+		int[] rightHalf = new int[arr.length - midIndex];
+
+		for (int i = 0; i < midIndex; i++) {
+			leftHalf[i] = arr[i];
+		}
+		for (int i = midIndex; i < arr.length; i++) {
+			rightHalf[i - midIndex] = arr[i];
+		}
+
+		mergeSort(leftHalf);
+		mergeSort(rightHalf);
+
+		merge(arr, leftHalf, rightHalf);
+	}
+
+	public static void merge(int[] arr, int[] leftHalf, int[] rightHalf) {
+		int leftSize = leftHalf.length;
+		int rightSize = rightHalf.length;
+
+		int i = 0, j = 0, k = 0;
+
+		while (i < leftSize && j < rightSize) {
+			comparisons++;
+			if (leftHalf[i] <= rightHalf[j]) {
+				arr[k] = leftHalf[i];
+				i++;
+			} else {
+				arr[k] = rightHalf[j];
+				j++;
+			}
+			k++;
+		}
+
+		while (i < leftSize) {
+			comparisons++;
+			arr[k] = leftHalf[i];
+			i++;
+			k++;
+		}
+
+		while (j < rightSize) {
+			comparisons++;
+			arr[k] = rightHalf[j];
+			j++;
+			k++;
+		}
+	}
 }

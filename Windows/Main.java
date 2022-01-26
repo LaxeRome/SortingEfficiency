@@ -91,6 +91,7 @@ public class Main {
 		long selectionEnd = System.currentTimeMillis();
 
 		long mergeBegin = System.currentTimeMillis();
+		ms.mergeSort(mergeSorted);
 		long mergeEnd = System.currentTimeMillis();
 
 		System.out.println("\nBubble Sort: " + (bubbleEnd - bubbleBegin) + " ms");
@@ -99,11 +100,14 @@ public class Main {
 		System.out.println("Comparisions: " + ss.comparisons + "\n");
 		System.out.println("Quick Sort: " + (quickEnd - quickBegin) + " ms");
 		System.out.println("Comparisons: " + qs.comparisons + "\n");
+		System.out.println("Merge Sort: " + (mergeEnd - mergeBegin) + " ms");
+		System.out.println("Comparisons: " + ms.comparisons + "\n");
 
 		write("unsorted", arr);
 		write("bubbleSort", bubbleSorted);
 		write("selectionSort", selectionSorted);
 		write("quickSort", quickSorted);
+		write("mergeSort", mergeSorted);
 	}
 
 	public static void write(String filename, int[] arr) throws IOException {

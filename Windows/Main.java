@@ -62,16 +62,19 @@ public class Main {
 		}
 		int[] arr = new int[arrLength];
 		for (int i = 0; i < arrLength; i++) {
-			arr[i] = (int) (Math.random() * 20000) - 10000;
+			arr[i] = (int) (Math.random() * 20000) - 10000; //gets a random number 
 		}
-		sortTheArray(arr);
+		sortTheArray(arr); //calls method sortTheArray
 	}
 
 	public static void sortTheArray(int[] arr) throws IOException {
+    //creates arrays that are a copy of arr and have a size limit of arr.length
 		int[] quickSorted = Arrays.copyOf(arr, arr.length);
 		int[] bubbleSorted = Arrays.copyOf(arr, arr.length);
 		int[] selectionSorted = Arrays.copyOf(arr, arr.length);
 		int[] mergeSorted = Arrays.copyOf(arr, arr.length);
+
+    //calls each sorting algorithmns and times how long it takes to sort
 
 		QuickSort qs = new QuickSort();
 		BubbleSort bs = new BubbleSort();
@@ -94,6 +97,7 @@ public class Main {
 		ms.mergeSort(mergeSorted);
 		long mergeEnd = System.currentTimeMillis();
 
+    //prints time and number of comparisons for each sort
 		System.out.println("\nBubble Sort: " + (bubbleEnd - bubbleBegin) + " ms");
 		System.out.println("Comparisons: " + bs.comparisons + "\n");
 		System.out.println("Selection Sort: " + (selectionEnd - selectionBegin) + " ms");
@@ -103,6 +107,7 @@ public class Main {
 		System.out.println("Merge Sort: " + (mergeEnd - mergeBegin) + " ms");
 		System.out.println("Comparisons: " + ms.comparisons + "\n");
 
+    //calls write method
 		write("unsorted", arr);
 		write("bubbleSort", bubbleSorted);
 		write("selectionSort", selectionSorted);
@@ -110,6 +115,7 @@ public class Main {
 		write("mergeSort", mergeSorted);
 	}
 
+  //writes values in array to a .txt file
 	public static void write(String filename, int[] arr) throws IOException {
 		BufferedWriter outputWriter = null;
 		outputWriter = new BufferedWriter(new FileWriter(filename + ".txt"));

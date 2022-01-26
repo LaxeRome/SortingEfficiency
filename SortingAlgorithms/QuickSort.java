@@ -2,6 +2,7 @@ package SortingAlgorithms;
 import Windows.*;
 import java.util.*;
 public class QuickSort extends Sort{
+	public int comparisons;
     // Purpose: Sorts the unsorted array using quicksort
   	public void quickSort(int[] arr, int left, int right) {
 		if (left <= right) {
@@ -9,7 +10,6 @@ public class QuickSort extends Sort{
 			quickSort(arr, left, p-1);
 			quickSort(arr, p+1, right);
 		} 
-		printArray(arr);
 	}
 	    
 	private int getPivot(int left, int right) {
@@ -21,6 +21,7 @@ public class QuickSort extends Sort{
 		swap(arr, left, getPivot(left, right));
 		int border = left + 1;
 		for (int i = border; i <= right; i++) {
+			comparisons++;
 			if (arr[i] < arr[left]) {
 				swap(arr, i, border++);
 			}
